@@ -1,7 +1,11 @@
+import Meals from "./components/Meals";
+import Header from "./components/header";
+
 function App() {
   return (
     <>
-      <h1>음식주문 프로젝트</h1>
+      <Header />
+      <Meals />
     </>
   );
 }
