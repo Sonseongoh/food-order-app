@@ -20,8 +20,16 @@ export default function Cart() {
     userProgressCtx.hideCart();
   }
 
+  function handleGoToCheckout() {
+    userProgressCtx.showCheckout();
+  }
+
   return (
-    <Modal className="cart" open={userProgressCtx.progress === "cart"}>
+    <Modal
+      className="cart"
+      open={userProgressCtx.progress === "cart"}
+      onClose={userProgressCtx.progress === "cart" ? handleCloseCart : null}
+    >
       <h2>장바구니</h2>
       <ul>
         {cartCtx.items.map((item) => (
@@ -40,7 +48,9 @@ export default function Cart() {
         <Button textOnly onClick={handleCloseCart}>
           닫기{" "}
         </Button>
-        <Button onClick={handleCloseCart}>결제하기</Button>
+        {cartCtx.items.length > 0 && (
+          <Button onClick={handleGoToCheckout}>결제하기</Button>
+        )}
       </p>
     </Modal>
   );
